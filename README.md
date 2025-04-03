@@ -24,12 +24,23 @@ Run the following command in PowerShell:
 
 ```powershell
 git clone https://github.com/ryanf9802/nvim.git $HOME\AppData\Local\nvim ;
-. $HOME\AppData\Local\nvim\add_to_path.ps1 ;
+. $HOME\AppData\Local\nvim\create_ps_profile_var.ps1 ;
 cd $nvim
 ;
 ```
 
+If you would like to avoid manually installing the requirements,
+run the following command:
+
+```powershell
+. $nvim\install_requirements.ps1
+```
+
 ## Requirements
+
+These requirements can be manually installed using the following commands, but
+**are included in the installation process in [Cloning /
+Usage](#cloning--usage)**.
 
 ### Chocolately
 
