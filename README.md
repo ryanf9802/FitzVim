@@ -143,11 +143,11 @@ rest of the setup.
    Remove the `neocodeium.lua` plugin definition:
 
    ```powershell
-   del lua\plugins\neocodeium.lua
+   del $nvim\lua\plugins\neocodeium.lua
    ```
 
 2. **Remove the Plugin Entry**  
-   Edit the `lua/plugins/init.lua` file and delete the line that loads NeoCodeium:
+   Edit the `$nvim\lua\plugins\init.lua` file and delete the line that loads NeoCodeium:
 
    ```lua
    -- Remove this line:
