@@ -131,6 +131,31 @@ NeoCodeium is **completely optional**. If you choose not to authenticate:
 
 You can safely ignore the prompt if you do not wish to use it.
 
+#### Removing NeoCodeium
+
+NeoCodeium is optional and can be removed at any time with no impact on the
+rest of the setup.
+
+##### Steps to Remove:
+
+1. **Delete the Plugin File**  
+   Remove the `neocodeium.lua` plugin definition:
+
+   ```powershell
+   del lua\plugins\neocodeium.lua
+   ```
+
+2. **Remove the Plugin Entry**  
+   Edit the `lua/plugins/init.lua` file and delete the line that loads NeoCodeium:
+
+   ```lua
+   -- Remove this line:
+   require("plugins.neocodeium"),
+   ```
+
+NeoCodeium will no longer be loaded or available in your setup. You do not need
+to uninstall anything else.
+
 ---
 
 ### Completion and LSP Features
