@@ -2,9 +2,11 @@
 
 ## Table of Contents
 
-- [Cloning / Usage](#cloning--usage)
-  - [Windows 11 (PowerShell)](#windows-11-powershell)
-- [Requirements](#requirements)
+1. [Cloning / Usage](#cloning--usage)
+
+- [Windows 11 (PowerShell)](#windows-11-powershell)
+
+2. [Requirements](#requirements)
 
 ## Cloning / Usage
 
@@ -13,8 +15,9 @@ Ensure all dependencies are installed as described in
 
 ### Windows 11 (PowerShell)
 
-Ensure `$HOME\AppData\Local\nvim` does not exist. 
+Ensure `$HOME\AppData\Local\nvim` does not exist.
 This command can be used to delete it if it does:
+
 ```rm
 -Recurse -Force $HOME\AppData\Local\nvim`
 ```
