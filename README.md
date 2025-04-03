@@ -3,9 +3,7 @@
 ## Table of Contents
 
 1. [Cloning / Usage](#cloning--usage)
-
-- [Windows 11 (PowerShell)](#windows-11-powershell)
-
+   - [Windows 11 (PowerShell)](#windows-11-powershell)
 2. [Requirements](#requirements)
 
 ## Cloning / Usage
