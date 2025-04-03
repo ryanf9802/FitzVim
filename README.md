@@ -1,5 +1,10 @@
 # NVIM Application Directory
 
+NeoVim (NVIM) is expected to have already been installed.
+
+You can find instructions for NeoVim installation
+[here](https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-package).
+
 ## Table of Contents
 
 1. [Cloning / Usage](#cloning--usage)
