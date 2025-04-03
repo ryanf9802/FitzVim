@@ -1,9 +1,15 @@
 # NVIM Application Directory
 
+## Table of Contents
+
+1. [Cloning / Usage](#cloning--usage)
+   - [Windows 11 (PowerShell)](#windows-11-powershell)
+2. [Requirements](#requirements)
+
 ## Cloning / Usage
 
 Ensure all dependencies are installed as described in
-[Dependencies](#Dependencies).
+[Requirements](#requirements).
 
 ### Windows 11 (PowerShell)
 
@@ -19,7 +25,7 @@ cd $nvim
 ;
 ```
 
-## Dependencies
+## Requirements
 
 ### Chocolately
 
