@@ -14,9 +14,6 @@ return {
 					},
 				},
 			})
-			lspconfig.tsserver.setup({
-				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-			})
 
 			vim.diagnostic.config({
 				virtual_text = true,
