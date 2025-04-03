@@ -48,6 +48,8 @@ cd $nvim
 ;
 ```
 
+**OR**
+
 #### GitHub CLI `gh`
 
 Run the following command in PowerShell:
