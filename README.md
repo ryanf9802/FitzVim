@@ -34,6 +34,10 @@ This command can be used to delete it if it does:
 Remove-Item -Recurse -Force $HOME\AppData\Local\nvim
 ```
 
+---
+
+#### `git` Command Local
+
 Run the following command in PowerShell:
 
 ```powershell
@@ -43,6 +47,20 @@ git clone https://github.com/ryanf9802/NeoVim-Configuration.git $HOME\AppData\Lo
 cd $nvim
 ;
 ```
+
+#### GitHub CLI `gh`
+
+Run the following command in PowerShell:
+
+```powershell
+gh repo clone https://github.com/ryanf9802/NeoVim-Configuration.git $HOME\AppData\Local\nvim ;
+. $HOME\AppData\Local\nvim\create_ps_profile_var.ps1 ;
+. $PROFILE ;
+cd $nvim
+;
+```
+
+---
 
 If you would like to avoid manually installing the requirements,
 run the following command:
