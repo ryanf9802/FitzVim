@@ -1,6 +1,23 @@
 # NVIM Application Directory
 
-The `nvim` folder should be placed in `C:\Users\ryanf\AppData\Local`.
+## Cloning / Usage
+
+Ensure all dependencies are installed as described in
+[Dependencies](#Dependencies).
+
+### Windows 11 (PowerShell)
+
+Ensure `$HOME\AppData\Local\nvim` does not exist. This command can be used: `rm
+-Recurse -Force $HOME\AppData\Local\nvim`
+
+Run the following command in PowerShell:
+
+```powershell
+git clone https://github.com/ryanf9802/nvim.git $HOME\AppData\Local\nvim ;
+. $HOME\AppData\Local\nvim\add_to_path.ps1 ;
+cd $nvim
+;
+```
 
 ## Dependencies
 
