@@ -11,6 +11,12 @@ You can find instructions for NeoVim installation
 1. [Cloning / Usage](#cloning--usage)
    - [Windows 11 (PowerShell)](#windows-11-powershell)
 2. [Getting Started](#getting-started)
+   - [File Navigation](#file-navigation)
+   - [Finding Files and Searching](#finding-files-and-searching)
+   - [Formatting Code](#formatting-code)
+   - [NeoCodeium (AI Autocompletion)](#neocodeium-ai-autocompletion)
+   - [Completion and LSP Features](#completion-and-lsp-features)
+   - [Tips and Advanced Usage](#tips-and-advanced-usage)
 3. [Requirements](#requirements)
 
 ## Cloning / Usage
@@ -44,6 +50,10 @@ run the following command:
 ```
 
 ## Getting Started
+
+This section provides a step-by-step guide to getting started with this
+configuration. It does not include basic NeoVim usage, but it is intended to
+get you up and running with this specific configuration.
 
 Once you're inside a project directory, launch Neovim by running:
 
@@ -155,6 +165,92 @@ and Lua, with inline diagnostics, formatting, and hover docs.
 
 This setup is built for speed and convenience, and aims to be minimal but
 powerful out of the box.
+
+## Adding New Plugins
+
+All plugins are managed via [`lazy.nvim`](https://github.com/folke/lazy.nvim),
+and plugin definitions live inside the `lua/plugins/` directory. To add a new
+plugin:
+
+### 1. Create a Plugin File
+
+Create a new file inside the `lua/plugins/` directory. The filename can
+describe the plugin's purpose, e.g., `comment.lua`.
+
+Example for [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim):
+
+```lua
+-- lua/plugins/comment.lua
+return {
+  "numToStr/Comment.nvim",
+  config = function()
+    require("Comment").setup()
+  end,
+}
+```
+
+### 2. Register the Plugin
+
+Ensure the new plugin file is included in `lua/plugins/init.lua`. Add it to the
+returned list:
+
+```lua
+return {
+  -- other plugins...
+  require("plugins.comment"),
+}
+```
+
+### Installing Formatters with Mason
+
+This setup uses [`conform.nvim`](https://github.com/stevearc/conform.nvim) for formatting and [`mason.nvim`](https://github.com/williamboman/mason.nvim) for managing formatter binaries.
+
+#### Installing a Code Formatter
+
+To install a formatter, use the `:Mason` command to open the Mason UI:
+
+```vim
+:Mason
+```
+
+Press `5` to filter by only formatters.
+
+Search for the formatter you need and press `i` to install it.
+
+For example, to install:
+
+- `black` for Python
+- `prettier` for JavaScript, TypeScript, HTML, CSS, JSON, Markdown
+- `stylua` for Lua
+
+Once installed, `conform.nvim` will automatically pick it up and use it when formatting the appropriate file types.
+
+#### Verifying Installation
+
+You can verify that a formatter is installed and working by running:
+
+```vim
+:Mason
+```
+
+And checking that the formatter appears under "Installed".
+
+#### Optional: Install via CLI
+
+Alternatively, install formatters via command-line:
+
+```powershell
+# Python
+pip install black
+
+# JavaScript/TypeScript/etc.
+npm install -g prettier
+
+# Lua
+cargo install stylua
+```
+
+> Note: Using `:Mason` is the recommended approach, as it installs in an isolated environment managed by Neovim.
 
 ## Requirements
 
