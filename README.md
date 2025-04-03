@@ -1,4 +1,4 @@
-# NVIM Application Directory
+# Personal NeoVim Configuration
 
 NeoVim (NVIM) is expected to have already been installed.
 
