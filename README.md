@@ -39,6 +39,7 @@ Run the following command in PowerShell:
 ```powershell
 git clone https://github.com/ryanf9802/NeoVim-Configuration.git $HOME\AppData\Local\nvim ;
 . $HOME\AppData\Local\nvim\create_ps_profile_var.ps1 ;
+. $PROFILE ;
 cd $nvim
 ;
 ```
