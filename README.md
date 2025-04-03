@@ -17,7 +17,7 @@ Ensure `$HOME\AppData\Local\nvim` does not exist.
 This command can be used to delete it if it does:
 
 ```powershell
-rm -Recurse -Force $HOME\AppData\Local\nvim`
+Remove-Item -Recurse -Force $HOME\AppData\Local\nvim
 ```
 
 Run the following command in PowerShell:
