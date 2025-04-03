@@ -17,7 +17,8 @@ You can find instructions for NeoVim installation
    - [NeoCodeium (AI Autocompletion)](#neocodeium-ai-autocompletion)
    - [Completion and LSP Features](#completion-and-lsp-features)
    - [Tips and Advanced Usage](#tips-and-advanced-usage)
-3. [Requirements](#requirements)
+3. [Adding New Plugins](#adding-new-plugins)
+4. [Requirements](#requirements)
 
 ## Cloning / Usage
 
