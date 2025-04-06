@@ -34,14 +34,35 @@ This command can be used to delete it if it does:
 Remove-Item -Recurse -Force $HOME\AppData\Local\nvim
 ```
 
+---
+
+#### `git` Command Local
+
 Run the following command in PowerShell:
 
 ```powershell
 git clone https://github.com/ryanf9802/NeoVim-Configuration.git $HOME\AppData\Local\nvim ;
 . $HOME\AppData\Local\nvim\create_ps_profile_var.ps1 ;
+. $PROFILE ;
 cd $nvim
 ;
 ```
+
+**OR**
+
+#### GitHub CLI `gh`
+
+Run the following command in PowerShell:
+
+```powershell
+gh repo clone https://github.com/ryanf9802/NeoVim-Configuration.git $HOME\AppData\Local\nvim ;
+. $HOME\AppData\Local\nvim\create_ps_profile_var.ps1 ;
+. $PROFILE ;
+cd $nvim
+;
+```
+
+---
 
 If you would like to avoid manually installing the requirements,
 run the following command:
@@ -142,11 +163,11 @@ rest of the setup.
    Remove the `neocodeium.lua` plugin definition:
 
    ```powershell
-   del lua\plugins\neocodeium.lua
+   del $nvim\lua\plugins\neocodeium.lua
    ```
 
 2. **Remove the Plugin Entry**  
-   Edit the `lua/plugins/init.lua` file and delete the line that loads NeoCodeium:
+   Edit the `$nvim\lua\plugins\init.lua` file and delete the line that loads NeoCodeium:
 
    ```lua
    -- Remove this line:
