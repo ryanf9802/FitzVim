@@ -127,55 +127,53 @@ Formatting runs asynchronously and will fall back to LSP formatting if needed.
 
 ---
 
-### NeoCodeium (AI Autocompletion)
+### SuperMaven (AI Autocompletion)
 
-NeoCodeium provides optional AI-powered code suggestions.
+SuperMaven provides optional AI-powered code suggestions.
 
 #### Using It:
 
 - While in insert mode, suggestions appear inline as you type.
-- Press `<Alt-f>` to accept the full suggestion.
+- Press `<Tab>` to accept the full suggestion.
+- Press `<C-j>` to accept the current word.
+- Press `<C-]>` to clear the suggestion.
 
 #### First-Time Setup:
 
-- On first use, NeoCodeium will prompt you to authenticate in the browser.
-- Follow the on-screen instructions to link your editor with Codeium.
+- On first use, SuperMaven will prompt you to authenticate in the browser.
+- Follow the on-screen instructions to link your editor with SuperMaven.
 
 #### Note:
 
-NeoCodeium is **completely optional**. If you choose not to authenticate:
+SuperMaven is **completely optional**. If you choose not to authenticate:
 
 - It will not provide any AI suggestions.
 - It will not read or send any code.
-- Your editor experience will remain exactly the same, with no impact on
-  performance or features.
+- Your editor experience will remain exactly the same, with no impact on performance or features.
 
 You can safely ignore the prompt if you do not wish to use it.
 
-#### Removing NeoCodeium
+#### Removing SuperMaven
 
-NeoCodeium is optional and can be removed at any time with no impact on the
-rest of the setup.
+SuperMaven is optional and can be removed at any time with no impact on the rest of the setup.
 
 ##### Steps to Remove:
 
 1. **Delete the Plugin File**  
-   Remove the `neocodeium.lua` plugin definition:
+   Remove the `supermaven.lua` plugin definition:
 
-   ```powershell
-   del $nvim\lua\plugins\neocodeium.lua
-   ```
+```powershell
+del $nvim\lua\plugins\supermaven.lua
+```
 
 2. **Remove the Plugin Entry**  
-   Edit the `$nvim\lua\plugins\init.lua` file and delete the line that loads NeoCodeium:
+   Edit the `$nvim\lua\plugins\init.lua` file and delete the line that loads SuperMaven:
 
-   ```lua
-   -- Remove this line:
-   require("plugins.neocodeium"),
-   ```
-
-NeoCodeium will no longer be loaded or available in your setup. You do not need
-to uninstall anything else.
+```lua
+-- Remove this line:
+require("plugins.supermaven"),
+```
+SuperMaven will no longer be loaded or available in your setup. You do not need to uninstall anything else.
 
 ---
 
