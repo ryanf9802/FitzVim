@@ -14,7 +14,7 @@ You can find instructions for NeoVim installation
    - [File Navigation](#file-navigation)
    - [Finding Files and Searching](#finding-files-and-searching)
    - [Formatting Code](#formatting-code)
-   - [NeoCodeium (AI Autocompletion)](#neocodeium-ai-autocompletion)
+   - [SuperMaven (AI Autocompletion)](#supermaven-ai-autocompletion)
    - [Completion and LSP Features](#completion-and-lsp-features)
    - [Tips and Advanced Usage](#tips-and-advanced-usage)
 3. [Adding New Plugins](#adding-new-plugins)
@@ -140,12 +140,12 @@ SuperMaven provides optional AI-powered code suggestions.
 
 #### First-Time Setup:
 
-- On first use, SuperMaven will prompt you to authenticate in the browser.
-- Follow the on-screen instructions to link your editor with SuperMaven.
+- On first use, SuperMaven will prompt you to enable SuperMaven for your editor.
+- You can run :SupermavenUseFree to use the free tier.
 
 #### Note:
 
-SuperMaven is **completely optional**. If you choose not to authenticate:
+SuperMaven is **completely optional**. If you choose not to enable it:
 
 - It will not provide any AI suggestions.
 - It will not read or send any code.
