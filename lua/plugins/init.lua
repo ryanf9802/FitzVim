@@ -10,5 +10,5 @@ return {
   require("plugins.autopairs"),
   require("plugins.autotag"),
   require("plugins.surround"),
-  require("plugins.neocodeium"),
+  require("plugins.supermaven"),
 }
