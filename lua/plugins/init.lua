@@ -10,5 +10,6 @@ return {
   require("plugins.autopairs"),
   require("plugins.autotag"),
   require("plugins.surround"),
+  require("plugins.supermaven"),
   require("plugins.luasnip"),
 }
