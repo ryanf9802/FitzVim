@@ -27,10 +27,10 @@ return {
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" },
---        { name = "supermaven" },
+        --        { name = "supermaven" },
       }, {
-        { name = "buffer" },
-      }),
+          { name = "buffer" },
+        }),
     })
 
     -- Optional: integrate with nvim-autopairs if desired

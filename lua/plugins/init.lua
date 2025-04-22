@@ -12,4 +12,5 @@ return {
   require("plugins.surround"),
   require("plugins.supermaven"),
   require("plugins.luasnip"),
+  require("plugins.golf"),
 }
