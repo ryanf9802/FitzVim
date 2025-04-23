@@ -6,7 +6,6 @@ vim.opt.expandtab = true
 vim.opt.termguicolors = true
 vim.opt.mouse = ""
 vim.opt.shortmess:append("I")
-vim.opt.laststatus = 0
 vim.g.mapleader = " "
 
 local python_utils = require("utils.python")
