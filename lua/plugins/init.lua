@@ -13,4 +13,5 @@ return {
   require("plugins.supermaven"),
   require("plugins.luasnip"),
   require("plugins.golf"),
+  require("plugins.lualine"),
 }
