@@ -38,4 +38,3 @@ vim.keymap.set("n", "<leader>ff", function()
     require("telescope.builtin").find_files()
   end
 end, { desc = "Project files (smart)" })
-
