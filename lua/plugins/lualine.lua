@@ -31,7 +31,12 @@ return {
 				},
 				lualine_x = {
 					"encoding",
-					"filetype",
+					{
+						"filetype",
+						colored = true,
+						icon_only = false,
+						icon = { align = "center" },
+					},
 					{
 						"fileformat",
 						symbols = {

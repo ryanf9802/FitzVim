@@ -8,7 +8,6 @@ vim.keymap.set({ "n", "v" }, "<leader>f", function()
 end, { desc = "Format file or selection" })
 
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
-vim.keymap.set("n", "<leader>ff", function() require("telescope.builtin").find_files() end, { desc = "Find files" })
 
 vim.keymap.set("n", "<leader>fb", function() require("telescope").extensions.file_browser.file_browser() end,
   { desc = "File browser" })
@@ -33,7 +32,7 @@ vim.keymap.set("n", "<leader>fg", function()
 end, { desc = "Live grep (Git files if in repo)" })
 
 -- Smart fallback if not in Git repo
-vim.keymap.set("n", "<leader>p", function()
+vim.keymap.set("n", "<leader>ff", function()
   local ok = pcall(require("telescope.builtin").git_files)
   if not ok then
     require("telescope.builtin").find_files()
