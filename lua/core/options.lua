@@ -5,13 +5,13 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.termguicolors = true
 vim.opt.mouse = ""
-vim.opt.shortmess:append "I"
+vim.opt.shortmess:append("I")
+vim.opt.laststatus = 0
 vim.g.mapleader = " "
 
 local python_utils = require("utils.python")
 
 local venv_python = python_utils.find_venv_python()
 if venv_python then
-  vim.g.python3_host_prog = venv_python
+	vim.g.python3_host_prog = venv_python
 end
-
