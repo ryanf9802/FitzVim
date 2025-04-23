@@ -1,6 +1,6 @@
 return {
   require("plugins.conform"),
-  require("plugins.catppuccin"),
+  require("plugins.moonfly"),
   require("plugins.nvim-tree"),
   require("plugins.telescope"),
   require("plugins.treesitter"),
