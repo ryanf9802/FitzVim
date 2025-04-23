@@ -2,7 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		vim.opt.laststatus = 3
+		vim.opt.laststatus = 0
 
 		require("lualine").setup({
 			options = {
@@ -22,10 +22,13 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff" },
-				lualine_c = { "filename", {
-					"diagnostics",
-					sources = { "nvim_lsp" },
-				} },
+				lualine_c = {
+					{ "filename", path = 1 },
+					{
+						"diagnostics",
+						sources = { "nvim_lsp" },
+					},
+				},
 				lualine_x = {
 					"encoding",
 					"filetype",
