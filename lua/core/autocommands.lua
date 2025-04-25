@@ -2,14 +2,16 @@
 --- Log File Configuration
 
 -- Timer to check for file changes every second
--- local timer = vim.loop.new_timer()
--- timer:start(
--- 	0,
--- 	500,
--- 	vim.schedule_wrap(function()
--- 		vim.cmd("checktime")
--- 	end)
--- )
+local timer = vim.loop.new_timer()
+if timer then
+	timer:start(
+		0,
+		500,
+		vim.schedule_wrap(function()
+			vim.cmd("checktime")
+		end)
+	)
+end
 
 -- Create an autocommand group for log file tailing
 vim.api.nvim_create_augroup("LogFileTail", { clear = true })

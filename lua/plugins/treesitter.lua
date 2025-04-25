@@ -19,7 +19,7 @@ return {
       },
       highlight = {
         enable = true,
-        disable = function(lang, buf)
+        disable = function(_, buf)
           local ft = vim.bo[buf].filetype
           return ft == "log"
         end,
