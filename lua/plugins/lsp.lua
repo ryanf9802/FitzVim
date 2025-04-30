@@ -35,6 +35,8 @@ return {
 				},
 			})
 
+      lspconfig.terraformls.setup({})
+
 			vim.diagnostic.config({
 				virtual_text = true,
 				signs = true,

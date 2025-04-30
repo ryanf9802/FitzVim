@@ -13,6 +13,7 @@ return {
 			markdown = { "prettier" },
 			lua = { "stylua" },
 			sql = { "sqruff" },
+			terraform = { "terraform_fmt" },
 		},
 	},
 }
