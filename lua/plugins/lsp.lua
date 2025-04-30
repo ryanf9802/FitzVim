@@ -40,7 +40,7 @@ return {
     },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed     = { "pyright", "ts_ls", "lua_ls" },
+        ensure_installed     = { "pyright", "ts_ls", "lua_ls", "html" },
         automatic_installation = true,
       })
     end,
