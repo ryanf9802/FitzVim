@@ -14,4 +14,6 @@ return {
 	require("plugins.luasnip"),
 	require("plugins.golf"),
 	require("plugins.lualine"),
+  require("plugins.lsp_signature"),
 }
+
