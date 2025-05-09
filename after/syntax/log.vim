@@ -58,6 +58,10 @@ highlight default link LogDuration Number
 syntax match LogStatusSuccess /Status=\zs2\d\d\ze/
 highlight LogStatusSuccess ctermfg=LightGreen guifg=#00ff00
 
+" Highlight 3xx status codes (300–399) in bright yellow
+syntax match LogStatusRedirect /Status=\zs3\d\d\ze/
+highlight LogStatusRedirect ctermfg=Yellow guifg=#ffff00
+
 " Highlight 4xx and 5xx status codes (400–599) in bright red
 syntax match LogStatusError /Status=\zs[45]\d\d\ze/
 highlight LogStatusError ctermfg=LightRed guifg=#ff5555
