@@ -15,19 +15,6 @@ highlight default link LogSeparator Special
 syntax match LogRequestId /| \zsreq-[0-9a-zA-Z-]\+\ze |/
 highlight default link LogRequestId Constant
 
-" Match individual log levels and assign custom colors
-syntax match LogLevelINFO /| \zsINFO\ze |/
-highlight LogLevelINFO ctermfg=Yellow guifg=Yellow
-
-syntax match LogLevelWARNING /| \zsWARN\ze |/
-highlight LogLevelWARNING ctermfg=DarkYellow guifg=Orange
-
-syntax match LogLevelERROR /| \zsERROR\ze |/
-highlight LogLevelERROR ctermfg=Red guifg=Red
-
-syntax match LogLevelDEBUG /| \zsDEBUG\ze |/
-" No highlight applied, left default
-
 " Match the timestamp (format: HH:MM:SS UTC±ZZZZ) between the third and fourth pipe.
 syntax match LogTimestamp /| \zs\d\{2}:\d\{2}:\d\{2} UTC[-+]\d\{4}\ze |/
 highlight default link LogTimestamp Type
@@ -69,6 +56,17 @@ highlight LogStatusError ctermfg=LightRed guifg=#ff5555
 " Optionally highlight IP addresses (e.g., 127.0.0.1)
 syntax match LogIP /\v\d{1,3}(\.\d{1,3}){3}/
 highlight default link LogIP Constant
+
+syntax keyword LogLevelDEBUG   DEBUG
+syntax keyword LogLevelINFO    INFO
+syntax keyword LogLevelWARNING WARNING
+syntax keyword LogLevelERROR   ERROR
+
+" ——— Highlight groups for log-levels ———
+highlight LogLevelDEBUG   ctermfg=Blue      guifg=#9999ff
+highlight LogLevelINFO    ctermfg=LightGreen     guifg=#99ff99
+highlight LogLevelWARNING ctermfg=Yellow    guifg=#ffbb00
+highlight LogLevelERROR   ctermfg=LightRed       guifg=#ff4444
 
 let b:current_syntax = "log"
 
