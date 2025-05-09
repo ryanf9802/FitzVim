@@ -54,6 +54,10 @@ highlight default link LogResponse Statement
 syntax match LogDuration /Duration=\zs\d\+\.\d\+s/
 highlight default link LogDuration Number
 
+" Match status codes like Status=200
+syntax match LogStatus /Status=\zs\d\{3}\ze/
+highlight LogStatus ctermfg=Yellow guifg=Yellow
+
 " Optionally highlight IP addresses (e.g., 127.0.0.1)
 syntax match LogIP /\v\d{1,3}(\.\d{1,3}){3}/
 highlight default link LogIP Constant
