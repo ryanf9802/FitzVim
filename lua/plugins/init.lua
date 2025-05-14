@@ -16,5 +16,6 @@ return {
 	require("plugins.lualine"),
   require("plugins.lsp_signature"),
   require("plugins.inc-rename"),
+  require("plugins.comment"),
 }
 
