@@ -60,3 +60,9 @@ end, { desc = "Find Files (all besides .venv, .git ,.node_modules)" })
 
 -- plugins/outline.lua
 vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+
+vim.keymap.set("n", "<leader>r", function()
+  -- this builds “:IncRename <oldName>” for you
+  return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true, desc = "LSP: Incremental rename" })
+
