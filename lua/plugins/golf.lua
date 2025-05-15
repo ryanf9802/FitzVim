@@ -1,4 +1,4 @@
 return {
   "vuciv/golf",
-  enabled = true,
+  enabled = false,
 }
