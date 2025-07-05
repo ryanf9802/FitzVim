@@ -16,6 +16,7 @@ return {
         "tsx",
         "css",
         "html",
+        "svelte",
       },
       highlight = {
         enable = true,

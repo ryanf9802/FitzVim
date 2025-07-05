@@ -37,6 +37,24 @@ return {
 
 			lspconfig.terraformls.setup({})
 
+			lspconfig.svelte.setup({
+				settings = {
+					svelte = {
+						["enable-ts-plugin"] = true,
+					},
+				},
+				on_attach = function(client, bufnr)
+					if client.name == "svelte" then
+						vim.api.nvim_create_autocmd("BufWritePost", {
+							pattern = { "*.js", "*.ts" },
+							callback = function(ctx)
+								client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+							end,
+						})
+					end
+				end,
+			})
+
 			vim.diagnostic.config({
 				virtual_text = true,
 				signs = true,
@@ -61,7 +79,7 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "ts_ls", "lua_ls", "html" },
+				ensure_installed = { "pyright", "ts_ls", "lua_ls", "html", "svelte" },
 				automatic_installation = true,
 			})
 		end,
