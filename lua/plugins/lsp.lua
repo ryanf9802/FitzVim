@@ -79,8 +79,17 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "ts_ls", "lua_ls", "html", "svelte" },
-				automatic_installation = true,
+				ensure_installed = { "pyright", "lua_ls", "html", "svelte" },
+				-- Exclude TypeScript servers since we use typescript-tools plugin
+				automatic_installation = {
+					exclude = { "tsserver", "ts_ls", "typescript-language-server" },
+				},
+				handlers = {
+					-- Disable default handlers for TypeScript servers
+					["tsserver"] = function() end,
+					["ts_ls"] = function() end,
+					["typescript-language-server"] = function() end,
+				},
 			})
 		end,
 	},
