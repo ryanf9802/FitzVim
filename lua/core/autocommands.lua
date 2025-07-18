@@ -19,7 +19,7 @@ vim.api.nvim_create_augroup("LogFileTail", { clear = true })
 -- Track whether the cursor is at the bottom of the file
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 	group = "LogFileTail",
-	pattern = { "*.log" },
+	pattern = { "*.log", "*.jsonl" },
 	callback = function()
 		local current_line = vim.fn.line(".")
 		local last_line = vim.fn.line("$")
@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 -- When opening a log file, enable autoread and reduce the updatetime
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = "LogFileTail",
-	pattern = { "*.log" },
+	pattern = { "*.log", "*.jsonl" },
 	callback = function()
 		vim.opt_local.autoread = true
 		vim.opt_local.updatetime = 500 -- in milliseconds
@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- Periodically check if the file has changed on disk
 vim.api.nvim_create_autocmd("CursorHold", {
 	group = "LogFileTail",
-	pattern = { "*.log" },
+	pattern = { "*.log", "*.jsonl" },
 	callback = function()
 		vim.cmd("checktime")
 	end,
@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 -- After the file is reloaded, jump to the end only if the user was at the bottom
 vim.api.nvim_create_autocmd("FileChangedShellPost", {
 	group = "LogFileTail",
-	pattern = { "*.log" },
+	pattern = { "*.log", "*.jsonl" },
 	callback = function()
 		if vim.b.auto_scroll then
 			vim.cmd("normal! G")
@@ -63,5 +63,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { "*.log" },
 	callback = function()
 		vim.bo.filetype = "log"
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.jsonl" },
+	callback = function()
+		vim.bo.filetype = "json"
 	end,
 })

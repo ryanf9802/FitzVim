@@ -10,6 +10,7 @@ return {
 			html = { "prettier" },
 			css = { "prettier" },
 			json = { "prettier" },
+			jsonl = { "prettier" },
 			markdown = { "prettier" },
 			lua = { "stylua" },
 			sql = { "sqruff" },
