@@ -8,8 +8,8 @@ You can find instructions for NeoVim installation
 
 ## Table of Contents
 
-1. [Cloning / Usage](#cloning--usage)
-   - [Windows 11 (PowerShell)](#windows-11-powershell)
+1. [Installation](#installation)
+   - [Ubuntu/Linux](#ubuntulinux)
 2. [Getting Started](#getting-started)
    - [File Navigation](#file-navigation)
    - [Finding Files and Searching](#finding-files-and-searching)
@@ -20,55 +20,25 @@ You can find instructions for NeoVim installation
 3. [Adding New Plugins](#adding-new-plugins)
 4. [Requirements](#requirements)
 
-## Cloning / Usage
+## Installation
 
-Ensure all dependencies are installed as described in
-[Requirements](#requirements).
+### Ubuntu/Linux
 
-### Windows 11 (PowerShell)
+First, ensure all dependencies are installed as described in [Requirements](#requirements).
 
-Ensure `$HOME\AppData\Local\nvim` does not exist.
-This command can be used to delete it if it does:
-
-```powershell
-Remove-Item -Recurse -Force $HOME\AppData\Local\nvim
+Backup any existing Neovim configuration:
+```bash
+mv ~/.config/nvim ~/.config/nvim.backup
 ```
 
----
-
-#### `git` Command Local
-
-Run the following command in PowerShell:
-
-```powershell
-git clone https://github.com/ryanf9802/NeoVim-Configuration.git $HOME\AppData\Local\nvim ;
-. $HOME\AppData\Local\nvim\create_ps_profile_var.ps1 ;
-. $PROFILE ;
-cd $nvim
-;
+Clone this configuration:
+```bash
+git clone https://github.com/ryanf9802/NeoVim-Configuration.git ~/.config/nvim
 ```
 
-**OR**
-
-#### GitHub CLI `gh`
-
-Run the following command in PowerShell:
-
-```powershell
-gh repo clone https://github.com/ryanf9802/NeoVim-Configuration.git $HOME\AppData\Local\nvim ;
-. $HOME\AppData\Local\nvim\create_ps_profile_var.ps1 ;
-. $PROFILE ;
-cd $nvim
-;
-```
-
----
-
-If you would like to avoid manually installing the requirements,
-run the following command:
-
-```powershell
-. $nvim\install_requirements.ps1
+Or using GitHub CLI:
+```bash
+gh repo clone https://github.com/ryanf9802/NeoVim-Configuration.git ~/.config/nvim
 ```
 
 ## Getting Started
@@ -162,12 +132,12 @@ SuperMaven is optional and can be removed at any time with no impact on the rest
 1. **Delete the Plugin File**  
    Remove the `supermaven.lua` plugin definition:
 
-```powershell
-del $nvim\lua\plugins\supermaven.lua
+```bash
+rm ~/.config/nvim/lua/plugins/supermaven.lua
 ```
 
 2. **Remove the Plugin Entry**  
-   Edit the `$nvim\lua\plugins\init.lua` file and delete the line that loads SuperMaven:
+   Edit `~/.config/nvim/lua/plugins/init.lua` and delete the line that loads SuperMaven:
 
 ```lua
 -- Remove this line:
@@ -284,7 +254,7 @@ And checking that the formatter appears under "Installed".
 
 Alternatively, install formatters via command-line:
 
-```powershell
+```bash
 # Python
 pip install black
 
@@ -295,49 +265,52 @@ npm install -g prettier
 cargo install stylua
 ```
 
-> Note: Using `:Mason` is the recommended approach, as it installs in an isolated environment managed by Neovim.
+> **Note**: Using `:Mason` is the recommended approach, as it installs in an isolated environment managed by Neovim.
 
 ## Requirements
 
-These requirements can be manually installed using the following commands, but
-**are included in the installation process in [Cloning /
-Usage](#cloning--usage)**.
+Install the following dependencies on Ubuntu/Linux:
 
-### Chocolately
+### Essential Packages
 
-> For managing/installing CLI tools/packages
+```bash
+# Update package index
+sudo apt update
 
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; `
-[System.Net.ServicePointManager]::SecurityProtocol = `
-[System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
-iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+# Install Neovim (if not already installed)
+sudo apt install neovim
+
+# Install required dependencies
+sudo apt install nodejs npm ripgrep build-essential git curl
+
+# For WSL clipboard integration (if using WSL)
+sudo apt install xclip
 ```
 
-Be sure to run `choco --version` afterwards to validate installation.
+### Verify Installation
 
-### Node.JS and NPM
-
-```
-choco install nodejs.install -y
-```
-
-### Ripgrep
-
-> For telescope fuzzy finder live grep
-
-```
-choco install ripgrep -y
+```bash
+# Verify installations
+nvim --version
+node --version
+npm --version
+rg --version
+make --version
 ```
 
-Run `rg --version` to validate installation.
+### Optional: Install formatters system-wide
 
-### Make
+```bash
+# Python formatter
+pip install black
 
-> For improved fuzzy find matching
+# JavaScript/TypeScript formatter
+npm install -g prettier
 
+# Lua formatter (requires Rust)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source ~/.cargo/env
+cargo install stylua
 ```
-choco install make -y
-```
 
-Run `make --version` to validate installation.
+> **Note**: Formatters can also be installed through Mason (`:Mason` command) once Neovim is running.

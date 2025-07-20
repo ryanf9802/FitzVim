@@ -21,11 +21,13 @@ This is a personal Neovim configuration built on the `lazy.nvim` plugin manager.
 
 ### Leader Key and Important Keybindings
 - Leader key is `<Space>`
-- `<leader>f` - Format current file/selection using conform.nvim
+- `<leader>f` - Format current file/selection using conform.nvim (special log file handling)
 - `<leader>e` - Toggle nvim-tree file explorer (displays on right side)
 - `<leader>ff` - Find all files (excludes node_modules, __pycache__, .venv, .git)
-- `<leader>p` - Smart project files (git files if in repo, otherwise all files)
+- `<leader>p` - Smart project files (git files if in repo, otherwise all files)  
 - `<leader>fg` - Live grep with git file scope if available
+- `<leader>fb` - Open Telescope file browser
+- `<leader>/` - Search within current buffer
 - `<leader>r` - LSP incremental rename using inc-rename.nvim
 - `<leader>o` - Toggle outline view
 - `<C-c>` in visual mode - Copy to system clipboard
@@ -34,7 +36,7 @@ This is a personal Neovim configuration built on the `lazy.nvim` plugin manager.
 Located in `lua/plugins/conform.lua`:
 - Python: `black`
 - JavaScript/TypeScript: `prettier`
-- HTML/CSS/JSON/Markdown: `prettier`
+- HTML/CSS/JSON/JSONL/Markdown: `prettier`
 - Lua: `stylua`
 - SQL: `sqruff`
 - Terraform: `terraform_fmt`
@@ -64,6 +66,15 @@ Special handling for WSL environments:
 ### Testing Changes
 - Configuration changes take effect on restart: `:q` then relaunch `nvim`
 - For plugin changes, use `:Lazy` to manage plugin installation/updates
+
+### Requirements Installation
+Required dependencies for Ubuntu/Linux:
+- Node.js and npm (for LSP servers and prettier)
+- ripgrep (`rg`) for Telescope file search  
+- build-essential (includes make for improved fuzzy finding)
+- xclip (for WSL clipboard integration)
+
+Install with: `sudo apt install nodejs npm ripgrep build-essential xclip`
 
 ## File Structure Patterns
 - Keep plugin configurations isolated in separate files
