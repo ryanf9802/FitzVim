@@ -100,7 +100,6 @@ return {
 			require("mason-tool-installer").setup({
 				ensure_installed = {
 					"black",
-					"ruff",
 					"prettier",
 					"sqruff",
 					"stylua",
