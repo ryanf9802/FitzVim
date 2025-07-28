@@ -2,7 +2,6 @@ local M = {}
 local cached_python_path = nil
 
 local function get_venv_python_path(base_path)
-  -- Detect platform
   if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
     return base_path .. "\\.venv\\Scripts\\python.exe"
   else
@@ -18,10 +17,8 @@ function M.find_venv_python()
   local cwd = vim.fn.getcwd()
   local paths_to_check = {}
 
-  -- Add root-level .venv
   table.insert(paths_to_check, get_venv_python_path(cwd))
 
-  -- Check one level deep
   local handle = vim.loop.fs_scandir(cwd)
   if handle then
     while true do
