@@ -10,6 +10,7 @@ return {
 				settings = {
 					python = {
 						pythonPath = venv_python or "python",
+            disableVenvSearch = true,
 					},
 				},
 			})
