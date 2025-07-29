@@ -9,13 +9,6 @@ vim.opt.shortmess:append("I")
 vim.opt.textwidth = 120
 vim.g.mapleader = " "
 
-local python_utils = require("utils.python")
-
-local venv_python = python_utils.find_venv_python()
-if venv_python then
-	vim.g.python3_host_prog = venv_python
-end
-
 -- Clipboard integration via xclip
 if vim.fn.has('wsl') == 1 and vim.fn.executable('xclip') == 1 then
   vim.g.clipboard = {
@@ -30,6 +23,5 @@ if vim.fn.has('wsl') == 1 and vim.fn.executable('xclip') == 1 then
     },
     cache_enabled = false,
   }
-  -- make unnamed and unnamedplus both use the + register
   vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
 end
