@@ -4,7 +4,15 @@ return {
   lazy = false,
   opts = {
     explorer = { enabled = true },
+    bigfile = { enabled = true },
     git = { enabled = true },
+    gitbrowse = { 
+      enabled = true,
+      notify = false,
+    },
+    quickfile = {
+      enabled = true,
+    },
     picker = {
       enabled = true,
       sources = {
