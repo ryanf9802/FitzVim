@@ -12,7 +12,7 @@ return {
 			indent = {
 				char = "│",
 				blank = " ",
-				scope = { enabled = true },
+				scope = { enabled = false },
 				animate = { enabled = false },
 			},
 			gitbrowse = {

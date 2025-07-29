@@ -6,8 +6,12 @@ return {
 			local python_utils = require("utils.python")
 			local venv_python = python_utils.find_venv_python()
 
-			local on_attach = function(client, bufnr)
+			local on_attach = function(_, bufnr)
 				local opts = { buffer = bufnr, silent = true }
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
 			end
 
