@@ -16,7 +16,7 @@ jobs:
       - name: Setup Lua
         uses: leafo/gh-actions-lua@v10
         with:
-          luaVersion: "5.1"
+          luaVersion: '5.1'
 
       - name: Install dependencies
         run: |
@@ -42,7 +42,7 @@ jobs:
           cp -r . ../nvim-config-vendored
           cd ../nvim-config-vendored
           rm -rf .git .github/workflows
-          
+
           # Create the archive
           cd ..
           tar -czf nvim-config-${{ github.event.release.tag_name }}.tar.gz nvim-config-vendored/
@@ -63,7 +63,7 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const release_id = context.payload.release.id;
-            
+
             const currentBody = context.payload.release.body || '';
             const additionalInfo = `
 
@@ -88,3 +88,4 @@ jobs:
               release_id,
               body: currentBody + additionalInfo
             });
+
