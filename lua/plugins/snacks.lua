@@ -12,12 +12,15 @@ return {
 			indent = {
 				char = "│",
 				blank = " ",
-				scope = { enabled = false },
+				scope = { enabled = true },
 				animate = { enabled = false },
 			},
 			gitbrowse = {
 				notify = false,
 			},
+      -- statuscolumn = {
+      --   enabled = true,
+      -- },
 			quickfile = {
 				enabled = true,
 			},
