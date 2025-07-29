@@ -1,0 +1,8 @@
+# Vendor directory (only in releases)
+vendor/
+
+# Vendored configuration files (only in releases)
+init_vendored.lua
+lua/lazy_setup_vendored.lua
+install.sh
+README_VENDORED.md

@@ -1,16 +1,47 @@
+<div align="center">
+
 # FitzVim
 
-A modern, feature-rich Neovim configuration built with Lazy.nvim plugin manager.
+<p align="center">
+  <em>A modern, feature-rich Neovim configuration built with Lazy.nvim plugin manager</em>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Neovim-0.9+-green.svg?style=for-the-badge&logo=neovim" alt="Neovim">
+  <img src="https://img.shields.io/badge/Language-Lua-blue.svg?style=for-the-badge&logo=lua" alt="Lua">
+  <img src="https://img.shields.io/badge/Plugin%20Manager-Lazy.nvim-orange.svg?style=for-the-badge" alt="Lazy.nvim">
+</p>
+
+</div>
+
+---
 
 ## Features
 
-- LSP support for Python, Lua, TypeScript/JavaScript, JSON, YAML
-- Intelligent Python virtual environment detection
+<table>
+<tr>
+<td width="50%">
+
+**Language Support**
+- Python with intelligent virtual environment detection
+- Lua with full LSP integration
+- TypeScript/JavaScript support
+- JSON with schema validation
+- YAML configuration files
+
+</td>
+<td width="50%">
+
+**Developer Experience**
 - Fuzzy finding with git-aware file search
-- Syntax highlighting and code formatting
-- Auto-completion with snippets
-- File explorer and buffer management
-- WSL clipboard integration
+- Advanced syntax highlighting via Treesitter
+- Intelligent auto-completion with snippets
+- Integrated file explorer and buffer management
+- Seamless WSL clipboard integration
+
+</td>
+</tr>
+</table>
 
 ## Prerequisites
 
