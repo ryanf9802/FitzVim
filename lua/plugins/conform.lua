@@ -8,6 +8,7 @@ return {
 			javascriptreact = { "prettier" },
 			typescript = { "prettier" },
 			typescriptreact = { "prettier" },
+      markdown = { "prettier" },
 			json = { "prettier" },
 			yaml = { "prettier" },
 			yml = { "prettier" },
