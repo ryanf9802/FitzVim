@@ -78,7 +78,10 @@ jobs:
                \`\`\`bash
                wget https://github.com/ryanf9802/FitzVim/releases/download/${{ github.event.release.tag_name }}/nvim-config-${{ github.event.release.tag_name }}.tar.gz &&
                tar -xzf nvim-config-${{ github.event.release.tag_name }}.tar.gz &&
-               cd nvim-config-vendored && ./install.sh
+               cd nvim-config-vendored &&
+               ./install.sh &&
+               cd ../ && rm -rf nvim-config-vendored &&
+               rm -rf nvim-config-${{ github.event.release.tag_name }}.tar.gz
                \`\`\`
             2. Start Neovim!
 
