@@ -18,30 +18,19 @@
 
 ## Features
 
-<table border="0">
-<tr>
-<td width="50%" valign="top">
-
-**Language Support**
+### Language Support
 - Python with intelligent virtual environment detection
 - Lua with full LSP integration
 - TypeScript/JavaScript support
 - JSON with schema validation
 - YAML configuration files
 
-</td>
-<td width="50%" valign="top">
-
-**Developer Experience**
+### Developer Experience
 - Fuzzy finding with git-aware file search
 - Advanced syntax highlighting via Treesitter
 - Intelligent auto-completion with snippets
 - Integrated file explorer and buffer management
 - Seamless WSL clipboard integration
-
-</td>
-</tr>
-</table>
 
 ## Prerequisites
 
