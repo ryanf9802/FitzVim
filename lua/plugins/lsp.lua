@@ -1,6 +1,10 @@
 return {
 	{
+		"b0o/schemastore.nvim",
+	},
+	{
 		"neovim/nvim-lspconfig",
+		dependencies = { "b0o/schemastore.nvim" },
 		config = function()
 			local lspconfig = require("lspconfig")
 			local python_utils = require("utils.python")
@@ -47,6 +51,34 @@ return {
 				},
 			})
 
+			lspconfig.ts_ls.setup({
+				on_attach = on_attach,
+				filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+			})
+
+			lspconfig.jsonls.setup({
+				on_attach = on_attach,
+				settings = {
+					json = {
+						schemas = require('schemastore').json.schemas(),
+						validate = { enable = true },
+					},
+				},
+			})
+
+			lspconfig.yamlls.setup({
+				on_attach = on_attach,
+				settings = {
+					yaml = {
+						schemaStore = {
+							enable = false,
+							url = "",
+						},
+						schemas = require('schemastore').yaml.schemas(),
+					},
+				},
+			})
+
 			vim.diagnostic.config({
 				virtual_text = true,
 				signs = true,
@@ -71,7 +103,7 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "lua_ls" },
+				ensure_installed = { "pyright", "lua_ls", "ts_ls", "jsonls", "yamlls" },
 			})
 		end,
 	},
@@ -83,6 +115,7 @@ return {
 				ensure_installed = {
 					"black",
 					"stylua",
+					"prettier",
 				},
 				run_on_start = true,
 				auto_update = true,

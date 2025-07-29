@@ -4,6 +4,18 @@ return {
 		formatters_by_ft = {
 			python = { "black" },
 			lua = { "stylua" },
+			javascript = { "prettier" },
+			javascriptreact = { "prettier" },
+			typescript = { "prettier" },
+			typescriptreact = { "prettier" },
+			json = { "prettier" },
+			yaml = { "prettier" },
+			yml = { "prettier" },
+		},
+		formatters = {
+			prettier = {
+				prepend_args = { "--jsx-bracket-same-line", "false" },
+			},
 		},
 	},
 	keys = {
