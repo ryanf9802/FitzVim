@@ -3,7 +3,7 @@
 # FitzVim
 
 <p align="center">
-  <em>A modern, feature-rich Neovim configuration built with Lazy.nvim plugin manager</em>
+  <em>A blazingly fast, feature-rich Neovim configuration built with Lazy.nvim plugin manager</em>
 </p>
 
 <p align="center">
