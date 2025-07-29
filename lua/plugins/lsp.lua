@@ -6,16 +6,23 @@ return {
 			local python_utils = require("utils.python")
 			local venv_python = python_utils.find_venv_python()
 
+			local on_attach = function(client, bufnr)
+				local opts = { buffer = bufnr, silent = true }
+				vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
+			end
+
 			lspconfig.pyright.setup({
+				on_attach = on_attach,
 				settings = {
 					python = {
 						pythonPath = venv_python or "python",
-            disableVenvSearch = true,
+						disableVenvSearch = true,
 					},
 				},
 			})
 
 			lspconfig.lua_ls.setup({
+				on_attach = on_attach,
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -35,7 +42,6 @@ return {
 					},
 				},
 			})
-
 
 			vim.diagnostic.config({
 				virtual_text = true,
@@ -80,4 +86,3 @@ return {
 		end,
 	},
 }
-
