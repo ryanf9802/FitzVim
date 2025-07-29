@@ -74,13 +74,13 @@ jobs:
 
             This release includes all plugin dependencies vendored locally. To install:
 
-            1. Download the \`nvim-config-${{ github.event.release.tag_name }}.tar.gz\` asset
-            2. Extract to your Neovim config directory:
+            1. Download and extract the \`nvim-config-${{ github.event.release.tag_name }}.tar.gz\` asset. This will automatically back up any previously existing Neovim configuration.
                \`\`\`bash
-               tar -xzf nvim-config-${{ github.event.release.tag_name }}.tar.gz
-               mv nvim-config-vendored ~/.config/nvim
+               wget https://github.com/ryanf9802/FitzVim/releases/download/1.0.1/nvim-config-${{ github.event.release.tag_name }}.tar.gz &&
+               tar -xzf nvim-config-${{ github.event.release.tag_name }}.tar.gz &&
+               cd nvim-config-vendored && ./install.sh
                \`\`\`
-            3. Start Neovim - no internet connection required!
+            2. Start Neovim!
 
             This version is completely self-contained and doesn't require downloading any external dependencies.
             `;
@@ -91,4 +91,3 @@ jobs:
               release_id,
               body: currentBody + additionalInfo
             });
-
