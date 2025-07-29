@@ -1,102 +1,113 @@
 return {
-  {
-    "williamboman/mason.nvim",
-    cmd = "Mason",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "pyright",
-      },
-    },
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "neovim/nvim-lspconfig",
-    },
-    opts = {
-      ensure_installed = {
-        "lua_ls",
-        "pyright",
-      },
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/cmp-nvim-lsp",
-    },
-    config = function()
-      local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			local lspconfig = require("lspconfig")
+			local python_utils = require("utils.python")
+			local venv_python = python_utils.find_venv_python()
 
-      local on_attach = function(client, bufnr)
-        local opts = { buffer = bufnr, silent = true }
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-        vim.keymap.set("n", "<leader>f", function()
-          vim.lsp.buf.format({ async = true })
-        end, opts)
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-        vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
-      end
+			lspconfig.pyright.setup({
+				settings = {
+					python = {
+						pythonPath = venv_python or "python",
+            disableVenvSearch = true,
+					},
+				},
+			})
 
-      local servers = {
-        lua_ls = {
-          on_init = function(client)
-            local path = client.workspace_folders[1].name
-            if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
-              return
-            end
+			lspconfig.lua_ls.setup({
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+						workspace = {
+							library = {
+								vim.env.VIMRUNTIME,
+								"${3rd}/luv/library",
+								"${3rd}/busted/library",
+							},
+							checkThirdParty = false,
+						},
+						telemetry = {
+							enable = false,
+						},
+					},
+				},
+			})
 
-            client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-              runtime = {
-                version = 'LuaJIT'
-              },
-              workspace = {
-                checkThirdParty = false,
-                library = vim.api.nvim_get_runtime_file("", true)
-              }
-            })
-          end,
-          settings = {
-            Lua = {}
-          }
-        },
-        pyright = {},
-      }
+			lspconfig.terraformls.setup({})
 
-      for server, config in pairs(servers) do
-        config.capabilities = capabilities
-        config.on_attach = on_attach
-        lspconfig[server].setup(config)
-      end
+			lspconfig.svelte.setup({
+				settings = {
+					svelte = {
+						["enable-ts-plugin"] = true,
+					},
+				},
+				on_attach = function(client, _)
+					if client.name == "svelte" then
+						vim.api.nvim_create_autocmd("BufWritePost", {
+							pattern = { "*.js", "*.ts" },
+							callback = function(ctx)
+								client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+							end,
+						})
+					end
+				end,
+			})
 
-      vim.diagnostic.config({
-        virtual_text = true,
-        signs = {
-          text = {
-            [vim.diagnostic.severity.ERROR] = "󰅚 ",
-            [vim.diagnostic.severity.WARN] = "󰀪 ",
-            [vim.diagnostic.severity.HINT] = "󰌶 ",
-            [vim.diagnostic.severity.INFO] = " ",
-          },
-        },
-        underline = true,
-        update_in_insert = false,
-        severity_sort = true,
-        float = {
-          border = "rounded",
-          source = "always",
-        },
-      })
-    end,
-  },
+			vim.diagnostic.config({
+				virtual_text = true,
+				signs = true,
+				underline = true,
+				update_in_insert = false,
+				severity_sort = true,
+			})
+		end,
+	},
+	{
+		"williamboman/mason.nvim",
+		build = ":MasonUpdate",
+		config = function()
+			require("mason").setup()
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"neovim/nvim-lspconfig",
+		},
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "pyright", "lua_ls", "html", "svelte" },
+				automatic_installation = {
+					exclude = { "tsserver", "ts_ls", "typescript-language-server" },
+				},
+				handlers = {
+					-- Disable default handlers for TypeScript servers
+					["tsserver"] = function() end,
+					["ts_ls"] = function() end,
+					["typescript-language-server"] = function() end,
+				},
+			})
+		end,
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+		config = function()
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"black",
+					"prettier",
+					"sqruff",
+					"stylua",
+				},
+				run_on_start = true,
+				auto_update = true,
+			})
+		end,
+	},
 }
+
