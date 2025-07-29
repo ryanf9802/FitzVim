@@ -3,7 +3,6 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		require("fzf-lua").setup({
-			"default-title",
 			fzf_opts = {
 				["--layout"] = "reverse-list",
 			},

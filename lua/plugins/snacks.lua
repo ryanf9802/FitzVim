@@ -24,19 +24,8 @@ return {
 			picker = {
 				enabled = true,
 				backend = "fzf-lua",
-				opts = {
-					fzf_opts = {
-						["--layout"] = "reverse-list",
-					},
-				},
 				sources = {
-					files = {
-						hidden = true,
-						no_ignore = false,
-					},
 					explorer = {
-						hidden = true,
-						no_ignore = false,
 						win = {
 							list = {
 								keys = {
