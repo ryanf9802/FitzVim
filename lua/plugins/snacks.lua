@@ -34,6 +34,8 @@ return {
 								keys = {
 									["o"] = "confirm",
 									["<cr>"] = "explorer_cd",
+									["t"] = "tab",
+									["v"] = "vsplit",
 								},
 							},
 						},
