@@ -18,9 +18,9 @@
 
 ## Features
 
-<table>
+<table border="0">
 <tr>
-<td width="50%">
+<td width="50%" valign="top">
 
 **Language Support**
 - Python with intelligent virtual environment detection
@@ -30,7 +30,7 @@
 - YAML configuration files
 
 </td>
-<td width="50%">
+<td width="50%" valign="top">
 
 **Developer Experience**
 - Fuzzy finding with git-aware file search
