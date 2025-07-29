@@ -180,7 +180,7 @@ This release includes:
 
 ## Original Repository
 
-This vendored version was generated from: [Your Repository URL]
+This vendored version was generated from: https://github.com/ryanf9802/FitzVim.
 
 For the latest development version, visit the original repository.
 EOF
