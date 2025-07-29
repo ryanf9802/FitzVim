@@ -19,7 +19,7 @@ return {
 				settings = {
 					Lua = {
 						diagnostics = {
-							globals = { "vim" },
+							globals = { "vim", "Snacks" },
 						},
 						workspace = {
 							library = {
@@ -36,25 +36,6 @@ return {
 				},
 			})
 
-			lspconfig.terraformls.setup({})
-
-			lspconfig.svelte.setup({
-				settings = {
-					svelte = {
-						["enable-ts-plugin"] = true,
-					},
-				},
-				on_attach = function(client, _)
-					if client.name == "svelte" then
-						vim.api.nvim_create_autocmd("BufWritePost", {
-							pattern = { "*.js", "*.ts" },
-							callback = function(ctx)
-								client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-							end,
-						})
-					end
-				end,
-			})
 
 			vim.diagnostic.config({
 				virtual_text = true,
@@ -80,16 +61,7 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "lua_ls", "html", "svelte" },
-				automatic_installation = {
-					exclude = { "tsserver", "ts_ls", "typescript-language-server" },
-				},
-				handlers = {
-					-- Disable default handlers for TypeScript servers
-					["tsserver"] = function() end,
-					["ts_ls"] = function() end,
-					["typescript-language-server"] = function() end,
-				},
+				ensure_installed = { "pyright", "lua_ls" },
 			})
 		end,
 	},
@@ -100,8 +72,6 @@ return {
 			require("mason-tool-installer").setup({
 				ensure_installed = {
 					"black",
-					"prettier",
-					"sqruff",
 					"stylua",
 				},
 				run_on_start = true,

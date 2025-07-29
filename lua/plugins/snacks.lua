@@ -6,7 +6,7 @@ return {
     explorer = { enabled = true },
     bigfile = { enabled = true },
     git = { enabled = true },
-    gitbrowse = { 
+    gitbrowse = {
       enabled = true,
       notify = false,
     },
