@@ -76,7 +76,7 @@ jobs:
 
             1. Download and extract the \`nvim-config-${{ github.event.release.tag_name }}.tar.gz\` asset. This will automatically back up any previously existing Neovim configuration.
                \`\`\`bash
-               wget https://github.com/ryanf9802/FitzVim/releases/download/1.0.1/nvim-config-${{ github.event.release.tag_name }}.tar.gz &&
+               wget https://github.com/ryanf9802/FitzVim/releases/download/${{ github.event.release.tag_name }}/nvim-config-${{ github.event.release.tag_name }}.tar.gz &&
                tar -xzf nvim-config-${{ github.event.release.tag_name }}.tar.gz &&
                cd nvim-config-vendored && ./install.sh
                \`\`\`
