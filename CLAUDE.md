@@ -39,6 +39,16 @@ This is a Neovim configuration, not a traditional software project. Configuratio
 - `:Lazy clean` - Remove unused plugins
 - `:Mason` - Open Mason UI for LSP/formatter management
 
+### Plugin Vendoring
+
+The configuration includes scripts for creating vendored/offline versions:
+
+- `./scripts/vendor-plugins.sh` - Vendors all plugins from lazy-lock.json to `vendor/plugins/`
+- `./scripts/create-vendored-config.sh` - Creates a complete vendored configuration
+- `./scripts/test-vendoring.sh` - Tests the vendored configuration
+
+This allows for offline installations or air-gapped environments.
+
 ### Formatting
 
 - `<leader>f` - Format current file (where leader is space)
@@ -66,3 +76,22 @@ The configuration includes intelligent Python virtual environment detection that
 - Scans subdirectories for virtual environments
 - Caches the found Python path for performance
 - Configures Pyright LSP to use the detected Python interpreter
+- Supports both Unix/Linux (`.venv/bin/python`) and Windows (`.venv/Scripts/python.exe`) paths
+
+## Plugin Development
+
+When adding new plugins:
+1. Create a new `.lua` file in `lua/plugins/` directory
+2. The file should return a plugin specification table compatible with Lazy.nvim
+3. The `lua/plugins/init.lua` file automatically discovers and loads all plugin files
+4. Plugin files are loaded by filename (excluding `init.lua`)
+5. Restart Neovim or run `:Lazy sync` to install new plugins
+
+## Key Bindings Summary
+
+- **Leader key**: Space
+- **File operations**: `<leader>e` (explorer), `<leader>ff` (find files), `<leader>fg` (grep)
+- **LSP**: `gd` (definition), `gr` (references), `K` (hover), `<leader>r` (rename)
+- **Formatting**: `<leader>f` (format file)
+- **Comments**: `<leader>c` (line comment), `<leader>bc` (block comment)
+- **Clipboard**: `<C-c>` (copy to system clipboard in visual mode)
