@@ -3,8 +3,8 @@ vim.keymap.set("v", "<C-c>", '"+y', { noremap = true, silent = true })
 
 -- Obsidian keybindings
 vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<CR>", { desc = "Create new Obsidian note" })
-nvim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Open current note in Obsidian" })
-nvim.keymap.set("n", "<leader>oq", "<cmd>ObsidianSearch<CR>", { desc = "Search Obsidian notes" })
+vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianSearch<CR>", { desc = "Search Obsidian notes" })
+vim.keymap.set("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Quick switch Obsidian notes" })
 vim.keymap.set("n", "<leader>of", "<cmd>ObsidianFollowLink<CR>", { desc = "Follow Obsidian link" })
 vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Show Obsidian backlinks" })
 vim.keymap.set("n", "<leader>ot", "<cmd>ObsidianTags<CR>", { desc = "Show Obsidian tags" })
