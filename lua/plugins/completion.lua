@@ -46,9 +46,6 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
-				{ name = "obsidian" },
-				{ name = "obsidian_new" },
-				{ name = "obsidian_tags" },
 			}, {
 				{ name = "buffer" },
 				{ name = "path" },
@@ -88,9 +85,6 @@ return {
 						luasnip = "[Snippet]",
 						buffer = "[Buffer]",
 						path = "[Path]",
-						obsidian = "[Obsidian]",
-						obsidian_new = "[Obsidian]",
-						obsidian_tags = "[Tags]",
 					})[entry.source.name]
 					return vim_item
 				end,
