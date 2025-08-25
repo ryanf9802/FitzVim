@@ -13,6 +13,9 @@ return {
 			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 			vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
+			vim.keymap.set("n", "<leader>f", function()
+				vim.lsp.buf.format({ async = true })
+			end, opts)
 		end
 
 		metals_config.settings = {
