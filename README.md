@@ -24,6 +24,7 @@
 - TypeScript/JavaScript support
 - JSON with schema validation
 - YAML configuration files
+- Scala, sbt, and Java support via nvim-metals
 
 ### Developer Experience
 - Fuzzy finding with git-aware file search
@@ -31,6 +32,7 @@
 - Intelligent auto-completion with snippets
 - Integrated file explorer and buffer management
 - Seamless WSL clipboard integration
+- Git integration with inline decorations and diff viewer
 
 ## Prerequisites
 
@@ -43,6 +45,7 @@
 - `xclip` (for WSL clipboard integration)
 - Node.js (for TypeScript/JavaScript LSP)
 - Python (for Python LSP)
+- Java (for Scala/Java LSP)
 
 ## Installation
 
@@ -66,8 +69,9 @@
 ### Core
 - [folke/lazy.nvim](https://github.com/folke/lazy.nvim) - Plugin manager
 - [folke/snacks.nvim](https://github.com/folke/snacks.nvim) - Collection of utilities (file explorer, picker, git integration)
+- [rcarriga/nvim-notify](https://github.com/rcarriga/nvim-notify) - Notification manager
 
-### LSP & Completion  
+### LSP & Completion
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - LSP client configurations
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) - LSP server installer
 - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Mason-lspconfig integration
@@ -80,6 +84,7 @@
 - [hrsh7th/cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline) - Command line completion
 - [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippet engine
 - [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - LuaSnip completion source
+- [scalameta/nvim-metals](https://github.com/scalameta/nvim-metals) - Scala, sbt, and Java support
 
 ### Syntax & Formatting
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Syntax highlighting
@@ -96,6 +101,9 @@
 - [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim) - Commenting
 - [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Auto pairs
 - [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) - Auto close/rename HTML tags
+- [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround) - Surrounding pairs
+- [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git decorations
+- [sindrets/diffview.nvim](https://github.com/sindrets/diffview.nvim) - Diff viewer
 
 ## Key Bindings
 
@@ -175,6 +183,16 @@ Leader key is set to `<Space>`
 | Key | Action |
 |-----|--------|
 | `<leader>gb` | Git browse (open in browser) |
+| `<leader>hs` | Stage hunk |
+| `<leader>hr` | Reset hunk |
+| `<leader>hu` | Undo stage hunk |
+| `<leader>hp` | Preview hunk |
+| `]c` | Next hunk |
+| `[c` | Previous hunk |
+| `<leader>gv` | View diffs |
+| `<leader>gV` | View staged diffs |
+| `<leader>gh` | File history |
+| `<leader>gc` | Close diff view |
 
 ### Clipboard
 | Key | Action |
@@ -203,7 +221,7 @@ Leader key is set to `<Space>`
 ## Customization
 
 ### Adding Plugins
-1. Create a new file in `lua/plugins/` 
+1. Create a new file in `lua/plugins/`
 2. Return a plugin specification table
 3. Restart Neovim or run `:Lazy sync`
 
