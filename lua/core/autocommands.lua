@@ -62,3 +62,12 @@ vim.api.nvim_create_autocmd("BufRead", {
 	callback = open_image_externally,
 	desc = "Open image files in default system viewer",
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.jsonl",
+	callback = function()
+		vim.bo.filetype = "jsonl"
+		vim.cmd("set syntax=json")
+	end,
+	desc = "Treat .jsonl files as JSON for syntax highlighting without LSP",
+})
