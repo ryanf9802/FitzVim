@@ -8,6 +8,8 @@ vim.opt.mouse = ""
 vim.opt.shortmess:append("I")
 vim.opt.textwidth = 120
 vim.opt.laststatus = 3
+vim.opt.foldmethod = "indent"
+vim.opt.foldnestmax = 2
 vim.g.mapleader = " "
 
 -- Clipboard integration via xclip
