@@ -66,6 +66,10 @@ return {
 				},
 			})
 
+			lspconfig.bashls.setup({
+				on_attach = on_attach,
+			})
+
 			lspconfig.yamlls.setup({
 				on_attach = on_attach,
 				settings = {
@@ -103,7 +107,7 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "lua_ls", "ts_ls", "jsonls", "yamlls" },
+				ensure_installed = { "pyright", "lua_ls", "ts_ls", "jsonls", "yamlls", "bashls" },
 			})
 		end,
 	},
@@ -116,6 +120,8 @@ return {
 					"black",
 					"stylua",
 					"prettier",
+					"shfmt",
+					"shellcheck",
 				},
 				run_on_start = true,
 				auto_update = true,

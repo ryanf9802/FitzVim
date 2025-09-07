@@ -12,6 +12,8 @@ return {
 			json = { "prettier" },
 			yaml = { "prettier" },
 			yml = { "prettier" },
+			sh = { "shfmt" },
+			bash = { "shfmt" },
 		},
 		formatters = {
 			prettier = {
