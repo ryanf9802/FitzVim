@@ -24,6 +24,16 @@ return {
 			superMethodLensesEnabled = true,
 		}
 
+		-- Disable intrusive compilation messages
+		metals_config.handlers = {
+			["window/showMessage"] = function(_, result, ctx)
+				-- Only show error messages, ignore info messages like "Compiled root"
+				if result.type == vim.lsp.protocol.MessageType.Error then
+					vim.lsp.handlers["window/showMessage"](_, result, ctx)
+				end
+			end,
+		}
+
 		metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		return metals_config
