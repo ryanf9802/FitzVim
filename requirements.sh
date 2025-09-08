@@ -2,6 +2,10 @@
 
 sudo apt update
 
+# Python tooling for Mason-managed formatters/linters (e.g., black)
+# Mason creates a virtualenv and installs packages with pip; these are required.
+sudo apt install -y python3 python3-venv python3-pip
+
 # tell pip to trust the Python package servers
 PIP_CONF=~/.config/pip/pip.conf
 if ! grep -q "^\s*trusted-host" "$PIP_CONF" 2>/dev/null; then
@@ -22,7 +26,7 @@ fi
 
 # install coursier for metals (Scala LSP)
 # for x86-64 (aka AMD64)
-sudo apt install openjdk-21-jdk # java 21 lts
+sudo apt install -y openjdk-21-jdk # java 21 lts
 if ! command -v cs &>/dev/null; then
   echo "coursier-cli (cs) not found. Installing..."
   curl -fL "https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz" | gzip -d >cs
