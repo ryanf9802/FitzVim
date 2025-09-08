@@ -6,6 +6,24 @@ sudo apt update
 # Mason creates a virtualenv and installs packages with pip; these are required.
 sudo apt install -y python3 python3-venv python3-pip
 
+# Fast file finder used by file tree search (fd/fdfind)
+sudo apt install -y fd-find
+
+# Ensure `fd` is available as a command (Debian/Ubuntu package installs `fdfind`)
+if ! command -v fd &>/dev/null; then
+  if command -v fdfind &>/dev/null; then
+    mkdir -p "$HOME/.local/bin"
+    ln -sf "$(command -v fdfind)" "$HOME/.local/bin/fd"
+    echo "Created symlink: $HOME/.local/bin/fd -> $(command -v fdfind)"
+    case ":$PATH:" in
+      *":$HOME/.local/bin:"*) ;;
+      *) echo "Note: add $HOME/.local/bin to PATH to use 'fd' (or restart your shell)." ;;
+    esac
+  else
+    echo "Neither 'fd' nor 'fdfind' found after install. Check your apt sources."
+  fi
+fi
+
 # tell pip to trust the Python package servers
 PIP_CONF=~/.config/pip/pip.conf
 if ! grep -q "^\s*trusted-host" "$PIP_CONF" 2>/dev/null; then
