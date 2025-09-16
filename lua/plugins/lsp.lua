@@ -107,7 +107,7 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "lua_ls", "ts_ls", "jsonls", "yamlls", "bashls" },
+				ensure_installed = { "pyright", "lua_ls", "ts_ls", "jsonls", "yamlls", "bashls", "cssls" },
 			})
 		end,
 	},
