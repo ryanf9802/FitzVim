@@ -44,3 +44,10 @@
 - Adding a plugin: create `lua/plugins/<name>.lua` returning its spec; run `:Lazy sync`.
 - Editing core behavior: update files under `lua/core/`; keep changes minimal and documented in commit body.
 - When in doubt, test with `--headless` commands above and `:checkhealth`.
+
+## LSP Diagnostics (Headless)
+
+- Use `~/.config/nvim/scripts/cli_diagnostics.sh <file>` to capture diagnostics with a CLI-safe Neovim setup (defaults to text output).
+- Add `--format json` for JSON output or `--timeout-ms N` to wait longer for LSP attachment.
+- The script handles cache/state isolation and disables Mason installs; run it after modifying files so lint/type errors are current.
+- If `nvim` is not installed in the current environment, skip this check and do not note it in the review output.

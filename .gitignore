@@ -6,3 +6,9 @@ init_vendored.lua
 lua/lazy_setup_vendored.lua
 install.sh
 README_VENDORED.md
+
+# CLI diagnostics runtime data
+.cli-cache/
+.cli-state/
+
+.nvimlog

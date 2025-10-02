@@ -58,7 +58,7 @@ local function open_image_externally()
 end
 
 vim.api.nvim_create_autocmd("BufRead", {
-	pattern = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp", "*.tiff", "*.webp", "*.svg", "*.ico" },
+	pattern = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp", "*.tiff", "*.webp", "*.ico" },
 	callback = open_image_externally,
 	desc = "Open image files in default system viewer",
 })

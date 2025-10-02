@@ -1,4 +1,6 @@
-return {
+local cli_diagnostics_mode = vim.env.NVIM_CLI_DIAGNOSTICS and vim.env.NVIM_CLI_DIAGNOSTICS ~= "0"
+
+local specs = {
 	{
 		"b0o/schemastore.nvim",
 	},
@@ -91,15 +93,20 @@ return {
 				severity_sort = true,
 			})
 		end,
-	},
-	{
+}
+
+}
+
+if not cli_diagnostics_mode then
+	table.insert(specs, {
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
 		config = function()
 			require("mason").setup()
 		end,
-	},
-	{
+	})
+
+	table.insert(specs, {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = {
 			"williamboman/mason.nvim",
@@ -110,8 +117,9 @@ return {
 				ensure_installed = { "pyright", "lua_ls", "ts_ls", "jsonls", "yamlls", "bashls", "cssls" },
 			})
 		end,
-	},
-	{
+	})
+
+	table.insert(specs, {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		dependencies = { "williamboman/mason.nvim" },
 		config = function()
@@ -125,7 +133,9 @@ return {
 				},
 				run_on_start = true,
 				auto_update = true,
-			})
+		})
 		end,
-	},
-}
+	})
+end
+
+return specs
