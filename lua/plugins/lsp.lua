@@ -10,25 +10,40 @@ local specs = {
 		config = function()
 			local lspconfig = require("lspconfig")
 			local python_utils = require("utils.python")
-			local venv_python = python_utils.find_venv_python()
 
-			local on_attach = function(_, bufnr)
+			local on_attach = function(client, bufnr)
+				if client.name == "ruff" then
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
+				end
+
 				local opts = { buffer = bufnr, silent = true }
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
 			end
 
-			lspconfig.pyright.setup({
+			lspconfig.ruff.setup({
 				on_attach = on_attach,
-				settings = {
-					python = {
-						pythonPath = venv_python or "python",
-						disableVenvSearch = true,
+				init_options = {
+					settings = {
+						args = {},
 					},
 				},
+			})
+
+			lspconfig.pyright.setup({
+				on_attach = on_attach,
+				before_init = function(_, config)
+					local python_path = python_utils.find_venv_python()
+					if python_path then
+						config.settings = config.settings or {}
+						config.settings.python = config.settings.python or {}
+						config.settings.python.pythonPath = python_path
+					end
+				end,
 			})
 
 			lspconfig.lua_ls.setup({
@@ -114,7 +129,7 @@ if not cli_diagnostics_mode then
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "lua_ls", "ts_ls", "jsonls", "yamlls", "bashls", "cssls" },
+				ensure_installed = { "ruff", "pyright", "lua_ls", "ts_ls", "jsonls", "yamlls", "bashls", "cssls" },
 			})
 		end,
 	})
@@ -125,6 +140,8 @@ if not cli_diagnostics_mode then
 		config = function()
 			require("mason-tool-installer").setup({
 				ensure_installed = {
+					"ruff",
+					"pyright",
 					"black",
 					"stylua",
 					"prettier",
@@ -133,7 +150,7 @@ if not cli_diagnostics_mode then
 				},
 				run_on_start = true,
 				auto_update = true,
-		})
+			})
 		end,
 	})
 end
