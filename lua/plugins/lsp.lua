@@ -121,7 +121,7 @@ if not cli_diagnostics_mode then
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "lua_ls", "ts_ls", "jsonls", "yamlls", "bashls", "cssls" },
+				ensure_installed = { "pyright", "lua_ls", "ts_ls", "eslint", "jsonls", "yamlls", "bashls", "cssls" },
 			})
 		end,
 	})
@@ -133,6 +133,7 @@ if not cli_diagnostics_mode then
 			require("mason-tool-installer").setup({
 				ensure_installed = {
 					"black",
+					"ruff",
 					"stylua",
 					"prettier",
 					"shfmt",
