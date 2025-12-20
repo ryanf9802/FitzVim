@@ -8,9 +8,22 @@ local specs = {
 		"neovim/nvim-lspconfig",
 		dependencies = { "b0o/schemastore.nvim" },
 		config = function()
-			local python_utils = require("utils.python")
+			local lspconfig_util = require("lspconfig.util")
 			local schemastore = require("schemastore")
-			local venv_python = python_utils.find_venv_python()
+			local python_root_dir = lspconfig_util.root_pattern(
+				"pyproject.toml",
+				"setup.py",
+				"setup.cfg",
+				"requirements.txt",
+				"Pipfile",
+				".git"
+			)
+			local ty_config = {
+				cmd = { "ty", "server" },
+				filetypes = { "python" },
+				root_dir = python_root_dir,
+				single_file_support = true,
+			}
 
 			local on_attach = function(_, bufnr)
 				local opts = { buffer = bufnr, silent = true }
@@ -22,14 +35,7 @@ local specs = {
 			end
 
 			local server_configs = {
-				pyright = {
-					settings = {
-						python = {
-							pythonPath = venv_python or "python",
-							disableVenvSearch = true,
-						},
-					},
-				},
+				ty = ty_config,
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -85,6 +91,12 @@ local specs = {
 				vim.lsp.enable(vim.tbl_keys(server_configs))
 			else
 				local lspconfig = require("lspconfig")
+				local configs = require("lspconfig.configs")
+				if not configs.ty then
+					configs.ty = {
+						default_config = vim.tbl_deep_extend("force", {}, ty_config),
+					}
+				end
 				for name, cfg in pairs(server_configs) do
 					local server = lspconfig[name]
 					if server and server.setup then
@@ -121,7 +133,7 @@ if not cli_diagnostics_mode then
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "lua_ls", "ts_ls", "eslint", "jsonls", "yamlls", "bashls", "cssls" },
+				ensure_installed = { "lua_ls", "ts_ls", "eslint", "jsonls", "yamlls", "bashls", "cssls" },
 			})
 		end,
 	})

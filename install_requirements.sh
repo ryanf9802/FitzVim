@@ -16,8 +16,8 @@ if ! command -v fd &>/dev/null; then
     ln -sf "$(command -v fdfind)" "$HOME/.local/bin/fd"
     echo "Created symlink: $HOME/.local/bin/fd -> $(command -v fdfind)"
     case ":$PATH:" in
-      *":$HOME/.local/bin:"*) ;;
-      *) echo "Note: add $HOME/.local/bin to PATH to use 'fd' (or restart your shell)." ;;
+    *":$HOME/.local/bin:"*) ;;
+    *) echo "Note: add $HOME/.local/bin to PATH to use 'fd' (or restart your shell)." ;;
     esac
   else
     echo "Neither 'fd' nor 'fdfind' found after install. Check your apt sources."
@@ -42,16 +42,11 @@ else
   echo "Pip Configuration already exists. No changes made."
 fi
 
-# install coursier for metals (Scala LSP)
-# for x86-64 (aka AMD64)
-sudo apt install -y openjdk-21-jdk # java 21 lts
-if ! command -v cs &>/dev/null; then
-  echo "coursier-cli (cs) not found. Installing..."
-  curl -fL "https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz" | gzip -d >cs
-  chmod +x cs
-  ./cs setup
-  rm cs
-else
-  # If found, notify the user and exit
-  echo "coursier-cli (cs) is already installed."
+# Install uv + Python tooling used by this config
+if ! command -v uv &>/dev/null; then
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  export PATH="$HOME/.local/bin:$PATH"
 fi
+
+uv tool install ty
+uv tool install ruff

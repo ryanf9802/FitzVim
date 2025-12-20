@@ -8,7 +8,7 @@
 - Utilities: `lua/utils/python.lua` (virtualenv detection and helpers).
 - Lockfile: `lazy-lock.json` pins plugin versions.
 - Bootstrap: `lua/lazy_setup.lua` installs/configures `folke/lazy.nvim`.
-- Setup script: `requirements.sh` (optional host dependencies).
+- Setup script: `install_requirements.sh` (optional host dependencies).
 
 ## Build, Test, and Development Commands
 
@@ -16,7 +16,7 @@
 - Update Treesitter parsers: `:TSUpdate`.
 - Health check: `nvim --headless "+checkhealth" +qa` (or run `:checkhealth`).
 - Format Lua (if installed): `stylua .` or inside Neovim `:lua require("conform").format()`.
-- One-time deps (optional): `bash requirements.sh`.
+- One-time deps (optional): `bash install_requirements.sh`.
 
 ## Coding Style & Naming Conventions
 

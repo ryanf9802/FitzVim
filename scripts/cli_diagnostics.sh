@@ -14,31 +14,31 @@ file=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --format)
-      [[ $# -ge 2 ]] || usage
-      format="$2"
-      shift 2
-      ;;
-    --timeout-ms)
-      [[ $# -ge 2 ]] || usage
-      timeout="$2"
-      shift 2
-      ;;
-    --help|-h)
-      usage
-      ;;
-    --)
-      shift
-      break
-      ;;
-    -* )
-      usage
-      ;;
-    * )
-      file="$1"
-      shift
-      break
-      ;;
+  --format)
+    [[ $# -ge 2 ]] || usage
+    format="$2"
+    shift 2
+    ;;
+  --timeout-ms)
+    [[ $# -ge 2 ]] || usage
+    timeout="$2"
+    shift 2
+    ;;
+  --help | -h)
+    usage
+    ;;
+  --)
+    shift
+    break
+    ;;
+  -*)
+    usage
+    ;;
+  *)
+    file="$1"
+    shift
+    break
+    ;;
   esac
 done
 
