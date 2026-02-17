@@ -68,6 +68,9 @@ local specs = {
 					},
 				},
 				bashls = {},
+				stylelint_lsp = {
+					filetypes = { "css", "scss" },
+				},
 				yamlls = {
 					settings = {
 						yaml = {
@@ -133,7 +136,7 @@ if not cli_diagnostics_mode then
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "ts_ls", "eslint", "jsonls", "yamlls", "bashls", "cssls" },
+				ensure_installed = { "lua_ls", "ts_ls", "eslint", "jsonls", "yamlls", "bashls", "cssls", "stylelint_lsp" },
 			})
 		end,
 	})
