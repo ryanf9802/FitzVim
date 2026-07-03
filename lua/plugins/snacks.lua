@@ -103,6 +103,13 @@ return {
 			desc = "Help Tags",
 		},
 		{
+			"<leader>fs",
+			function()
+				Snacks.picker.lsp_symbols()
+			end,
+			desc = "Find Symbols",
+		},
+		{
 			"<leader>fF",
 			function()
 				Snacks.picker.files()
